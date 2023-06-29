@@ -1,0 +1,157 @@
+<section class="content">
+  <div class="content-block">
+    <div class="block-header" *ngFor="let breadscrum of breadscrums">
+      <!-- breadcrumb -->
+      <app-breadcrumb [title]="breadscrum.title" [items]="breadscrum.items" [active_item]="breadscrum.active">
+      </app-breadcrumb>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <mat-tab-group>
+          <mat-tab>
+            <ng-template mat-tab-label>
+              <i class="material-icons-two-tone psr-3">list_alt</i>
+              List View
+
+            </ng-template>
+
+
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+              <p>A basic message</p>
+              <button mat-raised-button color="primary" (click)="showBasicMessage()">CLICK
+                ME</button>
+            </div>
+
+
+
+
+            <div class="mt-5">
+              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="card">
+                  <div class="materialTableHeader">
+                    <div class="left">
+                      <ul class="header-buttons-left ms-0">
+                        <li class="tbl-title">
+                          <h2>All Students</h2>
+                        </li>
+                        <li class="tbl-search-box">
+                          <label for="search-input"><i class="material-icons search-icon">search</i></label>
+                          <input [(ngModel)]="searchQuery" placeholder="Search by Course Name" type="text" #filter class="browser-default search-field"
+                            aria-label="Search box">
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="right">
+                      <ul class="tbl-export-btn">
+                        <li class="tbl-header-btn">
+                          <div class="m-l-10" matTooltip="ADD">
+                            <button mat-mini-fab color="primary" (click)="addNew()">
+                              <mat-icon class="col-white">add</mat-icon>
+                            </button>
+                          </div>
+                        </li>
+                        <li class="tbl-header-btn">
+                          <div class="m-l-10" matTooltip="REFRESH">
+                            <button mat-mini-fab color="primary" (click)="refresh()">
+                              <mat-icon class="col-white">refresh</mat-icon>
+                            </button>
+                          </div>
+                        </li>
+                        <li class="tbl-header-btn">
+                          <!-- <div class="m-l-10" [hidden]=!selection.hasValue() matTooltip="DELETE">
+                            <button mat-mini-fab color="warn" (click)="removeSelectedRows()">
+                              <mat-icon class="col-white">delete
+                              </mat-icon>
+                            </button>
+                          </div> -->
+                        </li>
+                        <li>
+                          <div class="export-button m-l-10" matTooltip="XLSX">
+                            <img src="assets/images/icons/xlsx.png" alt="" (click)="exportExcel()" />
+                          </div>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+
+
+
+
+
+
+            <div class="row clearfix">
+               <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="card">
+
+                  <div class="header">
+                    <h2>Basic Table</h2>
+
+                  </div>
+                  <div class="body table-responsive">
+                    <table  class="table table-striped">
+                      <thead >
+                        <tr >
+                          <th>#</th>
+                          <th>ID</th>
+                          <th>Course Name</th>
+                          <th>Teacher</th>
+                          <th>Length</th>
+                          <th>Details</th>
+                          <th>Start</th>
+                          <th>Details</th>
+                          <th>Edit</th>
+                          <th>Delete</th>
+
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let item of data1 | filter: searchQuery" class="striped">
+                          <th scope="row">{{data1.indexOf(item)+1}}</th>
+                          <td>{{item.CourseId}}</td>
+                          <td>{{item.courseName}}</td>
+                          <td>{{item.teacher}}</td>
+                          <td> <span class="badge bg-pink">{{item.length}}</span></td>
+                          <td>{{item.courseDetails}}</td>
+                          <td>{{item.startDate}}</td>
+
+                          <td>
+                            <button (click)="details(item)"  class="btn " ><span class="badge bg-cyan" > Details </span></button></td>
+
+                          <td>
+                            <button (click)="editCall(item)"  class="btn " ><img src="../assets/images/banner/edit.png" style="width: 30px;" alt=""></button></td>
+                          <td >
+                            <button (click)="deleteItem(item)" class="btn " ><img src="../assets/images/banner/delete.png" style="width: 30px;" alt=""></button></td>
+                        </tr>
+                        <!-- <mat-paginator [length]="data1.length" [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator> -->
+                        </tbody>
+                        </table>
+                        </div>
+                        </div>
+                        </div>
+                        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          </mat-tab>
+        </mat-tab-group>
+      </div>
+    </div>
+  </div>
+</section>
