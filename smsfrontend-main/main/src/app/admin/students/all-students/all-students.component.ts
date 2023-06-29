@@ -8,6 +8,8 @@ import { Students } from './students.model';
 import { DataSource } from '@angular/cdk/collections';
 import {EditComponent} from '../all-students/dialogs/edit/edit.component'
 
+import {StudentdetailsComponent} from '../studentdetails/studentdetails.component'
+
 
 import {
   MatSnackBar,
@@ -45,11 +47,11 @@ export class AllStudentsComponent
     'rollNo',
     'firstName',
     'lastName',
-    'department',
-    'gender',
+
+
     'mobile',
     'email',
-    'date',
+    'details',
     'actions',
   ];
   exampleDatabase?: StudentsService;
@@ -290,9 +292,71 @@ export class AllStudentsComponent
       this.contextMenu.openMenu();
     }
   }
+
+
+
+
+
+  studentDetails(row: Students) {
+
+    this.id = row.StudentId;
+
+    console.log('detaydan gelen' + row.StudentId)
+
+    let tempDirection: Direction;
+    if (localStorage.getItem('isRtl') === 'true') {
+      tempDirection = 'rtl';
+    } else {
+      tempDirection = 'ltr';
+    }
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const dialogRef = this.dialog.open(StudentdetailsComponent, {
+      data: {
+        student: row,
+        action: 'edit',
+      },
+      direction: tempDirection,
+    });
+
+
+    // this.subs.sink = dialogRef.afterClosed().subscribe((result) => {
+    //   if (result === 1) {
+    //     // When using an edit things are little different, firstly we find record inside DataService by id
+    //     const foundIndex = this.exampleDatabase?.dataChange.value.findIndex(
+    //       (x: { id: number | undefined; }) => x.id === this.id
+    //     );
+    //     // Then you update that record using data from dialogData (values you enetered)
+    //     if (foundIndex != null && this.exampleDatabase) {
+    //       this.exampleDatabase.dataChange.value[foundIndex] =
+    //         this.studentsService.getDialogData();
+    //       // And lastly refresh table
+    //       this.refreshTable();
+    //       this.showNotification(
+    //         'black',
+    //         'Edit Record Successfully...!!!',
+    //         'bottom',
+    //         'center'
+    //       );
+    //     }
+    //   }
+
+    // })
+
+  }
+
+
+
+
+
+
+
+
+
 }
 export class ExampleDataSource extends DataSource<Students> {
   filterChange = new BehaviorSubject('');
+  dialog: any;
+
   get filter(): string {
     return this.filterChange.value;
   }
@@ -384,4 +448,8 @@ export class ExampleDataSource extends DataSource<Students> {
       );
     });
   }
+
+
+
+
 }

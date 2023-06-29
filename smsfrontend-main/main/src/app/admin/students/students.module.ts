@@ -17,6 +17,7 @@ import { SharedModule } from '@shared';
 import { ComponentsModule } from '@shared/components/components.module';
 import { EditComponent } from './all-students/dialogs/edit/edit.component';
 import { StudentsListComponent } from './all-students/students-list/students-list.component';
+import { StudentdetailsComponent } from './studentdetails/studentdetails.component';
 
 
 @NgModule({
@@ -35,6 +36,7 @@ import { StudentsListComponent } from './all-students/students-list/students-lis
     StdFormDialogComponent,
     EditComponent,
     StudentsListComponent,
+    StudentdetailsComponent,
 
   ],
   imports: [

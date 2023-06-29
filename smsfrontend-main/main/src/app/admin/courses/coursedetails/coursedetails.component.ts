@@ -30,6 +30,7 @@ export class Courses {
   teacher: string | undefined;
   startDate: Date | undefined;
   enrolledStudents: Students[] | undefined;
+  courseDetails!: string;
 
   constructor(init?: Partial<Courses>) {
     Object.assign(this, init);

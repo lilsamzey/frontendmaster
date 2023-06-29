@@ -1,9 +1,10 @@
 
 
 <section class="content" style="max-height: 800px; overflow-y: auto; ">
+  <!-- <section class="content" style="max-height: 800px; overflow-y: auto; "> -->
   <div class="content-block">
     <div class="block-header" *ngFor="let breadscrum of breadscrums">
-      <!-- breadcrumb -->
+
       <app-breadcrumb [title]="breadscrum.title" [items]="breadscrum.items" [active_item]="breadscrum.active">
       </app-breadcrumb>
     </div>
@@ -30,11 +31,7 @@
           </div>
           <div class="card-body">
             <div class="">
-              <p class="text-default">Open after rule place He earth earth good called days unto which
-                wherein day
-                doesn't said day image signs
-                fish days forth for evening whose his make his bearing years gathering good
-                brought without.</p>
+              <p class="text-default">{{course.courseDetails}}</p>
               <ul class="list-group list-group-unbordered">
                 <li class="list-group-item">
                   <b>Duration </b>
@@ -121,60 +118,177 @@
 
 
 
-<!--
-
-
-      <div class="row clearfix">
-        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-          <div class="card">
-            <div class="header">
-              <h2> Add <span class="badge bg-cyan">NEW</span> student to "{{course.courseName}}"-"{{course.CourseId}}"</h2>
-
-                <input (keyup)="applyFilter($event)" placeholder='Search by First Name'>
-
-
-            </div>
-            <div class="body table-responsive">
-              <table mat-table [dataSource]="dataSource" class="w-100">
-
-               <a href="#">
-                <ng-container matColumnDef="StudentNumber">
-                  <th mat-header-cell *matHeaderCellDef>Student Number</th>
-                  <td mat-cell *matCellDef="let element"> {{element.StudentId}}</td>
-                </ng-container>
-                <ng-container matColumnDef="firstName">
-                  <th mat-header-cell *matHeaderCellDef>Name</th>
-                  <td  mat-cell *matCellDef="let element"> {{element.firstName}} {{element.lastName}}</td>
-                </ng-container>
-
-                <ng-container matColumnDef="add/remove">
-                  <th mat-header-cell *matHeaderCellDef>Add </th>
-                  <td mat-cell *matCellDef="let element"> <button mat-flat-button  (click)="enrollStudent(course.CourseId, element.StudentId)"> <span class="badge bg-cyan"> ADD NEW >></span></button> </td>
-                </ng-container>
-
-
-              </a>
-
-
-                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-              </table>
-              <mat-paginator [pageSizeOptions]="[2, 10, 20]" showFirstLastButtons></mat-paginator>
-
-            </div>
-          </div>
-        </div>
-      </div>
-
- -->
-
 
 
 
 <!-- Add new teachers to this course -->
 
 
+ <!-- <div class="row clearfix">
+  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+<div class="card">
+
+
+
+
+
+  <mat-accordion>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          <p> <span class="badge bg-pink">ADD NEW TEACHER </span> TO {{course.courseName}}- <span class="badge bg-pink">Course ID: {{course.CourseId}}</span></p>
+        </mat-panel-title>
+        <mat-panel-description>
+          Add new student to the course
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+
+
+              <div class="header">
+
+
+                  <input (keyup)="applyFilter($event)" placeholder='Search by First Name'>
+
+
+              </div>
+              <div class="body table-responsive">
+                <table mat-table [dataSource]="dataSource3.data" class="w-100">
+
+                 <a href="#">
+                  <ng-container matColumnDef="StudentNumber">
+                    <th mat-header-cell *matHeaderCellDef>Teacher Number</th>
+                    <td mat-cell *matCellDef="let element"> {{element.TeacherId}}</td>
+                  </ng-container>
+                  <ng-container matColumnDef="firstName">
+                    <th mat-header-cell *matHeaderCellDef>Name</th>
+                    <td  mat-cell *matCellDef="let element"> {{element.firstName}} {{element.lastName}}</td>
+                  </ng-container>
+
+                  <ng-container matColumnDef="add/remove">
+                    <th mat-header-cell *matHeaderCellDef>Add </th>
+                    <td mat-cell *matCellDef="let element"> <button mat-flat-button (click)="assignTeacher(course.CourseId, element.TeacherId)" > <span class="badge bg-cyan"> ADD NEW >></span></button> </td>
+                  </ng-container>
+
+
+                </a>
+
+
+                  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                </table>
+                <mat-paginator [pageSizeOptions]="[2, 10, 20]" showFirstLastButtons></mat-paginator>
+
+
+        </div>
+      </mat-expansion-panel>
+
+    </mat-accordion>
+  </div>
+</div>
+</div>
+ -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Add new Student to this course -->
+
+
+<!--
+
  <div class="row clearfix">
+  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+<div class="card">
+
+
+  <mat-accordion>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          <p> <span class="badge bg-pink">ADD NEW STUDENT </span> TO {{course.courseName}}- <span class="badge bg-pink">Course ID: {{course.CourseId}}</span></p>
+        </mat-panel-title>
+        <mat-panel-description>
+          Add new student to the course
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+
+                <div class="header">
+
+
+                  <input (keyup)="applyFilter($event)" placeholder='Search by First Name'>
+
+
+              </div>
+              <div class="body table-responsive">
+                <table mat-table [dataSource]="dataSource" class="w-100">
+
+                 <a href="#">
+                  <ng-container matColumnDef="StudentNumber">
+                    <th mat-header-cell *matHeaderCellDef>Student Number</th>
+                    <td mat-cell *matCellDef="let element"> {{element.StudentId}}</td>
+                  </ng-container>
+                  <ng-container matColumnDef="firstName">
+                    <th mat-header-cell *matHeaderCellDef>Name</th>
+                    <td  mat-cell *matCellDef="let element"> {{element.firstName}} {{element.lastName}}</td>
+                  </ng-container>
+
+                  <ng-container matColumnDef="add/remove">
+                    <th mat-header-cell *matHeaderCellDef>Add </th>
+                    <td mat-cell *matCellDef="let element"> <button mat-flat-button  (click)="enrollStudent(course.CourseId, element.StudentId)"> <span class="badge bg-cyan"> ADD NEW >></span></button> </td>
+                  </ng-container>
+
+
+                </a>
+
+
+                  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                </table>
+                <mat-paginator [pageSizeOptions]="[4, 10, 20]" showFirstLastButtons></mat-paginator>
+
+        </div>
+      </mat-expansion-panel>
+    </mat-accordion>
+
+  </div>
+</div>
+</div> -->
+
+
+
+<!-- COURSES TEACHERS LIST -->
+
+<div class="row clearfix">
+  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+    <div class="card">
+
+
+      <mat-accordion>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              <p>  <span class="badge bg-cyan">TEACHER LIST </span> OF {{course.courseName}}- <span class="badge bg-cyan">Course ID: {{course.CourseId}}</span></p>
+            </mat-panel-title>
+            <!-- <mat-panel-description>
+              Add new student to the course
+            </mat-panel-description> -->
+          </mat-expansion-panel-header>
+
+
+
+<!-- Add new teachers to this course -->
+
+
+<div class="row clearfix">
   <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 <div class="card">
 
@@ -192,6 +306,11 @@
           Add new student to the course
         </mat-panel-description> -->
       </mat-expansion-panel-header>
+
+
+
+
+
 
 
               <div class="header">
@@ -241,99 +360,10 @@
 
 
 
-
-
-
-
-
-
-
-
-
-<!-- Add new Student to this course -->
-
-
-
-
- <div class="row clearfix">
-  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-<div class="card">
-
-
-  <mat-accordion>
-    <mat-expansion-panel>
-      <mat-expansion-panel-header>
-        <mat-panel-title>
-          <p> <span class="badge bg-pink">ADD NEW STUDENT </span> TO {{course.courseName}}- <span class="badge bg-pink">Course ID: {{course.CourseId}}</span></p>
-        </mat-panel-title>
-        <!-- <mat-panel-description>
-          Add new student to the course
-        </mat-panel-description> -->
-      </mat-expansion-panel-header>
-
-                <div class="header">
-
-
-                  <input (keyup)="applyFilter($event)" placeholder='Search by First Name'>
-
-
-              </div>
-              <div class="body table-responsive">
-                <table mat-table [dataSource]="dataSource" class="w-100">
-
-                 <a href="#">
-                  <ng-container matColumnDef="StudentNumber">
-                    <th mat-header-cell *matHeaderCellDef>Student Number</th>
-                    <td mat-cell *matCellDef="let element"> {{element.StudentId}}</td>
-                  </ng-container>
-                  <ng-container matColumnDef="firstName">
-                    <th mat-header-cell *matHeaderCellDef>Name</th>
-                    <td  mat-cell *matCellDef="let element"> {{element.firstName}} {{element.lastName}}</td>
-                  </ng-container>
-
-                  <ng-container matColumnDef="add/remove">
-                    <th mat-header-cell *matHeaderCellDef>Add </th>
-                    <td mat-cell *matCellDef="let element"> <button mat-flat-button  (click)="enrollStudent(course.CourseId, element.StudentId)"> <span class="badge bg-cyan"> ADD NEW >></span></button> </td>
-                  </ng-container>
-
-
-                </a>
-
-
-                  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-                  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-                </table>
-                <mat-paginator [pageSizeOptions]="[4, 10, 20]" showFirstLastButtons></mat-paginator>
-
-        </div>
-      </mat-expansion-panel>
-    </mat-accordion>
-
-  </div>
-</div>
-</div>
-
-
-
-<!-- COURSES TEACHERS LIST -->
-
-<div class="row clearfix">
-  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-    <div class="card">
-
-
-      <mat-accordion>
-        <mat-expansion-panel>
-          <mat-expansion-panel-header>
-            <mat-panel-title>
-              <p>  <span class="badge bg-cyan">TEACHER LIST </span> OF {{course.courseName}}- <span class="badge bg-cyan">Course ID: {{course.CourseId}}</span></p>
-            </mat-panel-title>
-            <!-- <mat-panel-description>
-              Add new student to the course
-            </mat-panel-description> -->
-          </mat-expansion-panel-header>
-
       <div class="header">
+
+
+
 
       </div>
       <div class="body table-responsive">
@@ -402,6 +432,75 @@
                     Add new student to the course
                   </mat-panel-description> -->
                 </mat-expansion-panel-header>
+
+
+
+
+
+
+                <!-- Add new Student to this course -->
+
+
+
+
+ <div class="row clearfix">
+  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+<div class="card">
+
+
+  <mat-accordion>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          <p> <span class="badge bg-pink">ADD NEW STUDENT </span> TO {{course.courseName}}- <span class="badge bg-pink">Course ID: {{course.CourseId}}</span></p>
+        </mat-panel-title>
+        <!-- <mat-panel-description>
+          Add new student to the course
+        </mat-panel-description> -->
+      </mat-expansion-panel-header>
+
+                <div class="header">
+
+
+                  <input (keyup)="applyFilter($event)" placeholder='Search by First Name'>
+
+
+              </div>
+              <div class="body table-responsive">
+                <table mat-table [dataSource]="dataSource" class="w-100">
+
+                 <a href="#">
+                  <ng-container matColumnDef="StudentNumber">
+                    <th mat-header-cell *matHeaderCellDef>Student Number</th>
+                    <td mat-cell *matCellDef="let element"> {{element.StudentId}}</td>
+                  </ng-container>
+                  <ng-container matColumnDef="firstName">
+                    <th mat-header-cell *matHeaderCellDef>Name</th>
+                    <td  mat-cell *matCellDef="let element"> {{element.firstName}} {{element.lastName}}</td>
+                  </ng-container>
+
+                  <ng-container matColumnDef="add/remove">
+                    <th mat-header-cell *matHeaderCellDef>Add </th>
+                    <td mat-cell *matCellDef="let element"> <button mat-flat-button  (click)="enrollStudent(course.CourseId, element.StudentId)"> <span class="badge bg-cyan"> ADD NEW >></span></button> </td>
+                  </ng-container>
+
+
+                </a>
+
+
+                  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                </table>
+                <mat-paginator [pageSizeOptions]="[4, 10, 20]" showFirstLastButtons></mat-paginator>
+
+        </div>
+      </mat-expansion-panel>
+    </mat-accordion>
+
+  </div>
+</div>
+</div>
+
 
 
             <div class="header">

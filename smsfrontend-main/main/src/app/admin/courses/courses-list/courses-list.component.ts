@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Component, ElementRef, OnInit } from '@angular/core';
 import { CoursesServiceService } from '../courses-service.service';
 import { HttpClient } from '@angular/common/http';
@@ -46,6 +48,9 @@ import { AdddialogComponent } from '../adddialog/adddialog.component';
 export class CoursesListComponent extends UnsubscribeOnDestroyAdapter implements OnInit{
 
 
+
+
+
   selection = new SelectionModel<Courses>(true, []);
 
   searchQuery = '';
@@ -65,6 +70,7 @@ export class CoursesListComponent extends UnsubscribeOnDestroyAdapter implements
     },
   ];
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   exampleDatabase: any;
   teachersService: any;
   constructor(
