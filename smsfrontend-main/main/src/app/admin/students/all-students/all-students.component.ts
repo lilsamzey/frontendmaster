@@ -56,7 +56,7 @@ export class AllStudentsComponent
   ];
   exampleDatabase?: StudentsService;
 
-// allStudents= StudentsService.allStudents;
+ allStudent:Students[]=[];
 
   dataSource!: ExampleDataSource;
   selection = new SelectionModel<Students>(true, []);
@@ -84,8 +84,15 @@ export class AllStudentsComponent
   contextMenu?: MatMenuTrigger;
   contextMenuPosition = { x: '0px', y: '0px' };
 
-  ngOnInit() {
+  async ngOnInit(): Promise<void> {
     this.loadData();
+    try {
+      this.allStudent = await this.studentsService.getAllStudentss();
+      console.log(this.allStudent)
+    } catch (error) {
+      console.error('Error:', error);
+    }
+
 
   }
   refresh() {

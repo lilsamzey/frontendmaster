@@ -13,9 +13,13 @@ export class AuthService {
   public currentUser: Observable<User>;
 
   constructor(private http: HttpClient) {
-    this.currentUserSubject = new BehaviorSubject<User>(
-      JSON.parse(localStorage.getItem('currentUser') || '{}')
-    );
+
+    const currentUser = JSON.parse(localStorage.getItem('currentUser') || '{}');
+  this.currentUserSubject = new BehaviorSubject<User>(currentUser);
+  this.currentUser = this.currentUserSubject.asObservable();
+    // this.currentUserSubject = new BehaviorSubject<User>(
+    //   JSON.parse(localStorage.getItem('currentUser') || '{}')
+    // );
     this.currentUser = this.currentUserSubject.asObservable();
   }
 
@@ -26,7 +30,7 @@ export class AuthService {
   login(username: string, password: string) {
 
       return this.http
-      .post<User>(`${environment.apiUrl}/authenticate`, {
+      .post<User>(`${environment.apiUrl}/auth`, {
         username,
         password,
       })
@@ -35,9 +39,9 @@ export class AuthService {
           // store user details and jwt token in local storage to keep user logged in between page refreshes
 
           localStorage.setItem('currentUser', JSON.stringify(user));
-          console.log(JSON.stringify(user))
+          console.log(JSON.stringify(user.token))
           this.currentUserSubject.next(user);
-          return user;
+          return user.token;
         })
       );
   }

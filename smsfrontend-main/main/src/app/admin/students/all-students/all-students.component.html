@@ -289,31 +289,65 @@
               <i class="material-icons-two-tone psr-3">grid_on</i>
               Grid View
             </ng-template>
+
+
+
+
+
+
+
+
+
+
+
+
+
             <div class="row mt-5 ml-0 mr-0">
-              <div class="col-md-4">
+
+
+
+
+              <div class="col-md-2" *ngFor="let student of allStudent ">
                 <div class="card border-apply">
                   <div class="m-b-20">
                     <div class="contact-grid">
-                      <div class="profile-header l-bg-purple-dark">
-                        <div class="user-name">Pooja Patel</div>
-                        <div class="name-center">Mathematics</div>
+                      <div class="profile-header bg-cyan">
+                        <div class="user-name">{{student.firstName}} {{student.lastName}}</div>
+                        <div class="name-center">{{student.StudentId}}</div>
                       </div>
-                      <img src="assets/images/user/usrbig1.jpg" class="user-img" alt="">
+                      <a class="btn"  (click)="studentDetails(student)"> <img class="user-img" src="assets/images/user/usrbig1.jpg" ></a>
+                      <!-- <button (click)="studentDetails(student)"><img src="assets/images/user/usrbig1.jpg" class="user-img" alt=""></button> -->
                       <p>
-                        A-103, shyam gokul flats, Mahatma Road
-                        <br />Mumbai
+                        {{student.address}}
+                        <br />{{student.email}}
                       </p>
                       <div>
                         <span class="phone">
-                          <i class="material-icons">phone</i>264-625-2583</span>
+                          <i class="material-icons">phone</i>{{student.mobile}}</span>
                       </div>
                       <div class="profile-userbuttons">
-                        <button mat-flat-button color="primary">Read More</button>
+                        <button mat-flat-button color="primary" (click)="studentDetails(student)">Read More</button>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
+
+
+
+
+
+
+
+
+
+
+
+
+<!--
+
+
+
               <div class="col-md-4">
                 <div class="card border-apply">
                   <div class="m-b-20">
@@ -577,7 +611,7 @@
                     </div>
                   </div>
                 </div>
-              </div>
+              </div> -->
             </div>
           </mat-tab>
         </mat-tab-group>

@@ -22,6 +22,9 @@ export class StudentsService extends UnsubscribeOnDestroyAdapter {
 
     return this.dialogData;
   }
+
+
+
   /** CRUD METHODS */
 
 
@@ -32,6 +35,8 @@ export class StudentsService extends UnsubscribeOnDestroyAdapter {
           next: (data) => {
             this.isTblLoading = false;
             this.dataChange.next(data);
+            this.allStudents=data;
+
             resolve(data);
           },
           error: (error: HttpErrorResponse) => {

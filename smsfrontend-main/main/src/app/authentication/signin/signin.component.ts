@@ -32,24 +32,24 @@ export class SigninComponent
 
   ngOnInit() {
     this.authForm = this.formBuilder.group({
-      username: ['teacher@school.org', Validators.required],
-      password: ['teacher@123', Validators.required],
+      username: ['', Validators.required],
+      password: ['', Validators.required],
     });
   }
   get f() {
     return this.authForm.controls;
   }
   adminSet() {
-    this.authForm.get('username')?.setValue('admin@school.org');
-    this.authForm.get('password')?.setValue('admin@123');
+    this.authForm.get('username')?.setValue('user1');
+    this.authForm.get('password')?.setValue('password1');
   }
   teacherSet() {
-    this.authForm.get('username')?.setValue('teacher@school.org');
-    this.authForm.get('password')?.setValue('teacher@123');
+    this.authForm.get('username')?.setValue('user3');
+    this.authForm.get('password')?.setValue('password3');
   }
   studentSet() {
-    this.authForm.get('username')?.setValue('student@school.org');
-    this.authForm.get('password')?.setValue('student@123');
+    this.authForm.get('username')?.setValue('user2');
+    this.authForm.get('password')?.setValue('password2');
   }
   onSubmit() {
     this.submitted = true;
@@ -65,10 +65,11 @@ export class SigninComponent
           next: (res) => {
             if (res) {
               setTimeout(() => {
+               const currentUser = this.authService.currentUserValue;
+               console.log('current Username:', currentUser.username);
                 const role = this.authService.currentUserValue.role;
 
-                console.log(role)
-                if (role === Role.All || role === Role.Admin) {
+                 if (role === Role.All || role === Role.Admin) {
                   this.router.navigate(['/admin/dashboard/main']);
                 } else if (role === Role.Teacher) {
                   this.router.navigate(['/teacher/dashboard']);
