@@ -8,6 +8,7 @@ import {
   UntypedFormBuilder,
 } from '@angular/forms';
 import { Students } from '../../students.model';
+import Swal from 'sweetalert2';
 
 
 export interface DialogData {
@@ -22,6 +23,10 @@ export interface DialogData {
   styleUrls: ['./form-dialog.component.scss'],
 })
 export class FormDialogComponent {
+
+
+
+
   action: string;
   dialogTitle: string;
   stdForm: UntypedFormGroup;
@@ -74,6 +79,10 @@ export class FormDialogComponent {
       rollNo: [this.students.rollNo],
     });
   }
+
+
+
+
   submit() {
     // emppty stuff
   }
@@ -84,4 +93,15 @@ export class FormDialogComponent {
     this.studentsService.addStudents(this.stdForm.getRawValue());
     //this.studentsService.updateStudents(this.stdForm.getRawValue());
   }
+
+
+
+
+
+
+
+
+
+
+
 }

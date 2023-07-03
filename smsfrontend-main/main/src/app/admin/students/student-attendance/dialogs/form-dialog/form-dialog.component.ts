@@ -24,6 +24,11 @@ export interface DialogData {
   providers: [{ provide: MAT_DATE_LOCALE, useValue: 'en-GB' }],
 })
 export class FormDialogComponent {
+
+
+hata='';
+
+
   action: string;
   dialogTitle: string;
   studentAttendanceForm: UntypedFormGroup;
@@ -73,7 +78,13 @@ export class FormDialogComponent {
       status: [this.studentAttendance.status, [Validators.required]],
       note: [this.studentAttendance.note],
     });
+
   }
+
+
+
+
+
   submit() {
     // emppty stuff
   }
